@@ -1,43 +1,51 @@
 # critteremote
-WoW Addon Chinchilla Critter Emote
+WoW Addon BP Critter Emote
 
-This addon will have your non-combat pets do fun and random things.
+This addon will have your summoned non-combat pet do fun and random things. The terms 'critter' and 'pet' refer to non-combat pets in this file.
 
-When you have a pet out every so often  it will emote something fun.  You can also have your pets become more interactive by having them emote custom actions by using /ce instead of /emote.
+When you have a pet out every so often it will emote something fun. You can have your pets become more interactive by having them emote custom actions by using /ce instead of /emote.
 
-Your pets will also now respond to the in game emotes.  Try /wave at your pet.
+Your pets will now respond to in-game emotes.  Target your summoned pet and try /wave or /angry.
 
-Your pet will do an emote between five and ten minutes as long as you are not in combat.
-They might just do something different as well if you have something targeted.
+Your pet will do an emote every five to ten minutes as long as you are not in combat or a pet battle.
+Pets are fun things, if you target something else, they just might do or say something to the target.
 
-If you find any typos, or mistakes please let me know and i'll fix them.
+If you find any typos, or mistakes please let me know and I'll fix them.
 
-If you would like to add your own emotes edit the file CritterEmote_Emotes.lua
-If you send them to me I'll add them into the main release :)
+If you would like to add your own emotes edit the file CritterEmote_Emotes.lua You can also delete emotes you just don't like. It is important to note that when you do make changes to the .lua that new updates from Twitch will erase them. You may want to save them to a text file or, better yet, send them to me and I'll review them to add to or consider their removal from the main release :)
 
 Usage:
-/ce - have your critter perform a random emote.
+/ce - have your non-combat pet perform a random emote.
 /ce <message> - have your critter emote your <message>.
 /ce [options] - perform the various option:
 [options] =
-info  : displays Critter Emote information.
-help  : displays this help.
-off   : turns the random emote off.
-on    : turns the random emotes back on.
-
-If you have any ideas for new emotes please let me know.
+info     : displays Critter Emote information.
+help     : displays this help.
+off      : turns the random emote off.
+on       : turns the random emotes back on
+options  : Displays current options
+silly    : Toggles silly emotes
+jokes    : Toggles joke emotes
+locations: Toggles location emotes
+songs    : Toggles song emotes
+faction  : Toggles faction emotes
+        
 Currently emotes can be in the following category:
 
-Default - for all critters
+Default - for all Battle Pets, Companion Pets, Vanity Pets (critters)
 type - subtype of critter ( cat )
-name - specific pet ( Lil' K.T. )
+name - specific critter ( Lil' K.T. )
 
 Under each category there is 
 emote - such as /cry or /wave
 random - anything
 target - if something is targeted
 
-Version 1.12
+Version 1.14
+Updated to 8.0.1 Battle for Azeroth
+Made a fork to Chinchilla Critter Emote so add-on could be updated
+
+Version 1.13
 Updated to Legion
 Included updates from Acidfrost59
 Big thanks to Acidfrost59 for adding many more emotes and fixing some minor issues!
