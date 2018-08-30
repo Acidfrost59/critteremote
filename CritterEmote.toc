@@ -1,8 +1,8 @@
-## Interface: 70000
+## Interface: 80000
 ## Title: Critter Emotes
-## Author: Zompter
-## Version: 1.8
-## Notes: Make your Non-Combat pets have a bit more fun.  Just like a Chinchilla!
+## Author: Zompter, seegeen00, Acidfrost59
+## Version: 1.14
+## Notes: Make your Non-Combat pets have a bit more fun.
 ## DefaultState: Enabled
 ## LoadOnDemand: 0
 ## SavedVariablesPerCharacter: CE_Save_Table
