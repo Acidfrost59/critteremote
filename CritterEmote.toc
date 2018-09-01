@@ -1,11 +1,19 @@
 ## Interface: 80000
-## Title: Critter Emotes
-## Author: Zompter, seegeen00, Acidfrost59
+## Title: BP Critter Emotes
+## Author: Previous: Zompter, seegeen00 (Chinchilla Critter Emotes) Current: Acidfrost59
 ## Version: 1.14
-## Notes: Make your Non-Combat pets have a bit more fun.
-## DefaultState: Enabled
-## LoadOnDemand: 0
+## email: PBCritterEmote@gmail.com
+## Notes: Allows your non-combat pets to send random emotes to chat.
 ## SavedVariablesPerCharacter: CE_Save_Table
+CritterEmote.lua 
+CritterEmote_Emotes.lua 
+CritterEmote.xml
+
+## LoadOnDemand: 0
+## DefaultState: Enabled
+
+
+# Critter Emote
 CritterEmote.lua
 CritterEmote_Emotes.lua
 CritterEmote.xml
