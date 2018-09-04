@@ -4,8 +4,7 @@ local CritterEmote_Cats = {
   Silly = true;
   Song = true;
   Locations = true;
-  Target = true;
-  Faction = true;
+  Jokes = true;
 }
 -- Globals Section
 local CritterEmote_BaseInterval = 300.0; -- How often the OnUpdate code will run before random(in seconds)
@@ -24,8 +23,9 @@ local C_PetJournal = _G.C_PetJournal
 
 local CritterEmote_Strings = {
         --["UNHAPPY"] = "Interface\\Icons\\Spell_Misc_EmotionAngry",
-        ["WELCOME_MESSAGE"] = "Welcome to BP Critter Emote",
+        ["WELCOME_MESSAGE"] = "Welcome to CritterEmote",
         ["WELCOME_INFO"] = "Type <cmd>/ce help</cmd> for a list of commands.",
+        ["WELCOME_CHIN"] = "Chinchilla!",
         ["WELCOME_ACTIVE"] = "Critter Emote is currently : ",
         ["WELCOME_VERSION"] = "Critter Emote version is : " .. CritterEmote_version,
         
@@ -41,31 +41,30 @@ local CritterEmote_Strings = {
         ["HELP_9"] = "random_off : turns random emotes off.",
         ["HELP_10"] = "random_on : turns random emotes back on.",
         ["HELP_11"] = "options: Displays current options.",
-        ["HELP_12"] = "tog silly  : Toggles silly emotes.",
-        ["HELP_13"] = "tog target  : Toggles target emotes.",
-        ["HELP_14"] = "tog locations  : Toggles location emotes.",
-        ["HELP_15"] = "tog songs  : Toggles song emotes.",
-        ["HELP_16"] = "faction  : Toggles faction emotes."
+        ["HELP_12"] = "silly  : Toggles silly emotes.",
+        ["HELP_13"] = "jokes  : Toggles joke emotes.",
+        ["HELP_14"] = "locations  : Toggles location emotes.",
+        ["HELP_15"] = "songs  : Toggles somg emotes.",
         
-        --["HELP_17"] = "debug [on|off] : turns on the debugging options.",
+        --["HELP_10"] = "debug [on|off] : turns on the debugging options.",
 
 }
 
 --What to do with the Slash Commands
 --Needs to exist before OnLoad
 local function CritterEmote_SlashHandler(msg, editbox)
-        if (msg == 'BP' or msg == "Battle Pet") then
-                print('The Battle pets are active!');
+        if (msg == 'chin' or msg == "chinchilla") then
+                print('Obey the Chinchilla!');
         elseif msg == 'hello' then
                 print("Hello, World!");
   elseif (msg == 'off' ) then
     CritterEmote_enable = false;
     CritterEmote_UpdateSaveTable();
-    CritterEmote_Message("Critter Emote is now disabled.  Your pets are sad.");
+    CritterEmote_Message("Critter Emote is now disabled.  Your critters are sad.");
   elseif (msg == 'on' ) then
     CritterEmote_enable = true;
     CritterEmote_UpdateSaveTable();
-    CritterEmote_Message("Critter Emote is now enabled.  Party Time, Squeak!");
+    CritterEmote_Message("Critter Emote is now enabled.  Party Time, critters!");
         elseif (msg == "info") then
                 CritterEmote_Info();
         elseif (msg == "help" or msg == "hilfe" ) then  
@@ -83,15 +82,15 @@ local function CritterEmote_SlashHandler(msg, editbox)
   	CritterEmote_Message("Critter Emote Random Emotes are enabled!  Time for nom.");
   elseif(msg == "random_off" ) then
   	CritterEmote_randomEnable=false;
-  	CritterEmote_Message("Critter Emote Random Emotes are now disabled.  The critters are sad.");
+  	CritterEmote_Message("Critter Emote Random Emotes are now disabled.  The chinchillas are sad.");
   elseif(msg == "options" ) then
           CritterEmote_DisplayOptions();
   elseif(msg == "Silly" or msg=="silly") then
     if(CritterEmote_Cats["Silly"]) then
-      CritterEmote_Message("Silly Emotes now disabled. :(");
+      CritterEmote_Message("Silly Emotes now disabled.");
       CritterEmote_Cats["Silly"] = false;
     else
-      CritterEmote_Message("Silly Emotes now enabled. Time for fun!");
+      CritterEmote_Message("Silly Emotes now enabled.");
       CritterEmote_Cats["Silly"] = true;
     end
     CritterEmote_UpdateSaveTable();
@@ -113,13 +112,13 @@ local function CritterEmote_SlashHandler(msg, editbox)
       CritterEmote_Cats["Songs"] = true;
     end
     CritterEmote_UpdateSaveTable();
-  elseif(msg == "Faction" or msg=="faction") then
-    if(CritterEmote_Cats["Faction"]) then
-      CritterEmote_Message("Faction Emotes now disabled.");
-      CritterEmote_Cats["Faction"] = false;
+  elseif(msg == "Jokes" or msg=="jokes") then
+    if(CritterEmote_Cats["Jokes"]) then
+      CritterEmote_Message("Joke Emotes now disabled.");
+      CritterEmote_Cats["Jokes"] = false;
     else
-      CritterEmote_Message("Faction Emotes now enabled.");
-      CritterEmote_Cats["Faction"] = true;
+      CritterEmote_Message("Joke Emotes now enabled.");
+      CritterEmote_Cats["Jokes"] = true;
     end
     CritterEmote_UpdateSaveTable();
         elseif (msg == "") then
@@ -245,18 +244,14 @@ function CritterEmote_AddonLoaded()
   if CE_Save_Table["Songs"] == nil then
     CE_Save_Table["Songs"] = true;
   end
-  if CE_Save_Table["Target"] == nil then
-    CE_Save_Table["Target"] = true;
-  end
-  if CE_Save_Table["Faction"] == nil then
-    CE_Save_Table["Faction"] = true;
+  if CE_Save_Table["Jokes"] == nil then
+    CE_Save_Table["Jokes"] = true;
   end
   
   CritterEmote_Cats["Silly"] = CE_Save_Table["Silly"];
   CritterEmote_Cats["Locations"] = CE_Save_Table["Locations"];
   CritterEmote_Cats["Songs"] = CE_Save_Table["Songs"];
-  CritterEmote_Cats["Target"] = CE_Save_Table["Target"];
-  CritterEmote_Cats["Faction"] = CE_Save_Table["Faction"];
+  CritterEmote_Cats["Jokes"] = CE_Save_Table["Jokes"];
 
   CritterEmote_debug = CE_Save_Table["Debug"];
   CritterEmote_enable = CE_Save_Table["Enabled"];
@@ -270,8 +265,7 @@ function CritterEmote_UpdateSaveTable()
     Silly = CritterEmote_Cats["Silly"],
     Locations = CritterEmote_Cats["Locations"],
     Songs = CritterEmote_Cats["Songs"],
-    Target = CritterEmote_Cats["Target"],
-    Faction = CritterEmote_Cats["Faction"],
+    Jokes = CritterEmote_Cats["Jokes"],
     Debug = CritterEmote_debug,   
   }
 end
@@ -438,7 +432,7 @@ function CritterEmote_GetEmoteMessage(msg,petName,customName)
   search_name=nil;
   emoPT = CritterEmote_TableSearch(CritterEmote_Personalities, petName);
   if(emoPT == nil) then
-    emoPT = " " ; -- HACK to make sure table search is ok.
+    emoPT = " " ; -- HACK to make sure table serach is ok.
   end
   if(customName == nil ) then
   	customName = " " ;
@@ -568,7 +562,7 @@ function CritterEmote_DisplayEmote (message)
         if (string.sub(UnitName("player"), string.len(UnitName("player"))) == "s") then
                 nameAdd = '\' ';
         else
-                nameAdd = ': ';
+                nameAdd = '\'s ';
         end
         CritterEmote_EmoteToSend = nameAdd  .. message;
 end
