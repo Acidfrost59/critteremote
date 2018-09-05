@@ -16,7 +16,7 @@ local CritterEmote_Tooltip = nil ;
 local CritterEmote_enable = true;
 local CritterEmote_randomEnable = true;
 local CritterEmote_forceEmote = false;
-local CritterEmote_version = "1.14";
+local CritterEmote_version = "1.14a";
 local is5_0 = select(4, GetBuildInfo()) < 50100
 local _G = _G
 local C_PetJournal = _G.C_PetJournal
@@ -60,7 +60,7 @@ local function CritterEmote_SlashHandler(msg, editbox)
   elseif (msg == 'off' ) then
     CritterEmote_enable = false;
     CritterEmote_UpdateSaveTable();
-    CritterEmote_Message("Critter Emote is now disabled.  Your critters are sad.");
+    CritterEmote_Message("Critter Emote is now disabled.  The critters are sad.");
   elseif (msg == 'on' ) then
     CritterEmote_enable = true;
     CritterEmote_UpdateSaveTable();
