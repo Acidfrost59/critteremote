@@ -36,6 +36,8 @@ random - anything
 target - if something is targeted
 
 
+Version !.14a
+Fixed Bug that caused runon of emotes.
 
 Version 1.14
 Updated to Battle for Azeroth
